@@ -444,6 +444,92 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | type      | Integer | 划转类型:1 转入，2 转出，3 结算 |
 | time      | Long    | 创建时间                |
 
+
+### 资金转入转出分页查询
+**简要描述：** 
+
+- 资金转入转出分页查询
+
+**请求URL：** 
+
+- url + `v1/users/subaccount/asset/page`
+
+**请求方式：**
+
+- GET
+
+**参数：** 
+
+| 参数名    | 必选 | 类型   | 说明                         |
+| :-------- | :--- | :----- | ---------------------------- |
+| userId    | 是   | String | 用户id                       |
+| serialNum | 否   | String | 流水号                       |
+| assetIds  | 否   | String | 币种ids，以逗号分割(示例1,2) |
+| pageNo    | 否   | Integer | 页码，默认1                                           |
+| pageSize  | 否   | Integer | 每页条数，默认20，默认按照创建时间倒序 |
+
+ **返回示例**
+
+```
+{
+    "msg":null,
+    "code":0,
+    "data":
+    {
+        "pageNo":1,
+        "pageSize":3,
+        "total":781,
+        "item":[
+            {
+                "userId":"2509065103023670272",
+                "brokerId":"119",
+                "assetId":2,
+                "assetName":"BTC",
+                "amount":"100.0000000000000000",
+                "serialNum":"100010122344519109",
+                "type":1,
+                "time":1552373219000
+            },
+            {
+                "userId":"2509065103023670272",
+                "brokerId":"119",
+                "assetId":2,
+                "assetName":"BTC",
+                "amount":"-100.0000000000000000",
+                "serialNum":"123411004533322444",
+                "type":2,
+                "time":1552372377000
+            },
+            {
+                "userId":"2509065103023670272",
+                "brokerId":"119",
+                "assetId":2,
+                "assetName":"BTC",
+                "amount":"100.0000000000000000",
+                "serialNum":"1000022344519109",
+                "type":1,
+                "time":1552369800000
+            }
+        ]
+    },
+    "success":true
+}
+```
+
+ **返回参数说明** 
+
+| 参数名    | 类型    | 说明                    |
+| :-------- | :------ | ----------------------- |
+| brokerId  | String  | 券商id                  |
+| amount    | String  | 划转金额                |
+| serialNum | String  | 流水号                  |
+| userId    | String  | 用户id                  |
+| assetId   | Integer | 币种id                  |
+| assetName | String  | 币种名称                |
+| type      | Integer | 划转类型:1 转入，2 转出，3 结算 |
+| time      | Long    | 创建时间                |
+
+
 ### 完整交易记录
 
 **简要描述：** 
