@@ -851,8 +851,11 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | 100011  | 同一个流水号只能使用一次       |              |      |
 | 100012  | 相同的suid和brokerId只能注册一个账户       |              |      |
 | 200000  | 登录失败，用户ID或密码不对       |              |      |
-| 200001  | 余额不足       |              |      |
+| 200001  | 该币种的资产余额不足       |              |      |
 | 200002  | 用户不存在       |              |      |
+| 200003  | 用户资产信息为空，请先转入资产 | | |
+| 200004  | 用户资产里面没有该币种的资产信息，请先转入该币种资产 | | |
+| 200005  | userId和brokerId不对应，请检查apikey是否有误 | | |
 | 300000  | userId参数错误       |              |      |
 | 300001  | amount参数错误       |              |      |
 | 300002  | assetId参数错误       |              |      |
@@ -863,9 +866,13 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | 300007  | phone参数错误       |              |      |
 | 300008  | name参数错误       |              |      |
 | 300009  | email和phone必须要有一个       |              |      |
-| 300010  | assetId参数错误       |              |      |
 | 300011  | password参数错误       |              |      |
 | 300012  | pageNum参数错误       |              |      |
+| 300013  | pageSize参数错误 | | |
+| 300014  | startTime参数错误 | | |
+| 300015  | endTime参数错误 | | |
+| 300016  | brokerId参数错误 | | |
+| 300017  | assetId/assetName参数错误 | | |
 
 # Android集成文档
 
