@@ -140,6 +140,8 @@ String stringForSigning = requestGet + timestamp;
 String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_SHA_256, secret).hmacHex(Base64.encodeBase64String(stringForSigning.getBytes(StandardCharsets.UTF_8))).getBytes());
 ```
 
+**注意：对于java中的HmacAlgorithms和HmacUtils，请使用commons-codec-1.11版本及以上版本**
+
 ### 服务器时间
 
 **简要描述：** 
@@ -443,6 +445,92 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | assetName | String  | 币种名称                |
 | type      | Integer | 划转类型:1 转入，2 转出，3 结算 |
 | time      | Long    | 创建时间                |
+
+
+### 资金转入转出分页查询
+**简要描述：** 
+
+- 资金转入转出分页查询
+
+**请求URL：** 
+
+- url + `v1/users/subaccount/asset/page`
+
+**请求方式：**
+
+- GET
+
+**参数：** 
+
+| 参数名    | 必选 | 类型   | 说明                         |
+| :-------- | :--- | :----- | ---------------------------- |
+| userId    | 是   | String | 用户id                       |
+| serialNum | 否   | String | 流水号                       |
+| assetIds  | 否   | String | 币种ids，以逗号分割(示例1,2) |
+| pageNo    | 否   | Integer | 页码，默认1                                           |
+| pageSize  | 否   | Integer | 每页条数，默认20，默认按照创建时间倒序 |
+
+ **返回示例**
+
+```
+{
+    "msg":null,
+    "code":0,
+    "data":
+    {
+        "pageNo":1,
+        "pageSize":3,
+        "total":781,
+        "item":[
+            {
+                "userId":"2509065103023670272",
+                "brokerId":"119",
+                "assetId":2,
+                "assetName":"BTC",
+                "amount":"100.0000000000000000",
+                "serialNum":"100010122344519109",
+                "type":1,
+                "time":1552373219000
+            },
+            {
+                "userId":"2509065103023670272",
+                "brokerId":"119",
+                "assetId":2,
+                "assetName":"BTC",
+                "amount":"-100.0000000000000000",
+                "serialNum":"123411004533322444",
+                "type":2,
+                "time":1552372377000
+            },
+            {
+                "userId":"2509065103023670272",
+                "brokerId":"119",
+                "assetId":2,
+                "assetName":"BTC",
+                "amount":"100.0000000000000000",
+                "serialNum":"1000022344519109",
+                "type":1,
+                "time":1552369800000
+            }
+        ]
+    },
+    "success":true
+}
+```
+
+ **返回参数说明** 
+
+| 参数名    | 类型    | 说明                    |
+| :-------- | :------ | ----------------------- |
+| brokerId  | String  | 券商id                  |
+| amount    | String  | 划转金额                |
+| serialNum | String  | 流水号                  |
+| userId    | String  | 用户id                  |
+| assetId   | Integer | 币种id                  |
+| assetName | String  | 币种名称                |
+| type      | Integer | 划转类型:1 转入，2 转出，3 结算 |
+| time      | Long    | 创建时间                |
+
 
 ### 完整交易记录
 
@@ -765,8 +853,11 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | 100011  | 同一个流水号只能使用一次       |              |      |
 | 100012  | 相同的suid和brokerId只能注册一个账户       |              |      |
 | 200000  | 登录失败，用户ID或密码不对       |              |      |
-| 200001  | 余额不足       |              |      |
+| 200001  | 该币种的资产余额不足       |              |      |
 | 200002  | 用户不存在       |              |      |
+| 200003  | 用户资产信息为空，请先转入资产 | | |
+| 200004  | 用户资产里面没有该币种的资产信息，请先转入该币种资产 | | |
+| 200005  | userId和brokerId不对应，请检查apikey是否有误 | | |
 | 300000  | userId参数错误       |              |      |
 | 300001  | amount参数错误       |              |      |
 | 300002  | assetId参数错误       |              |      |
@@ -777,9 +868,13 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | 300007  | phone参数错误       |              |      |
 | 300008  | name参数错误       |              |      |
 | 300009  | email和phone必须要有一个       |              |      |
-| 300010  | assetId参数错误       |              |      |
 | 300011  | password参数错误       |              |      |
 | 300012  | pageNum参数错误       |              |      |
+| 300013  | pageSize参数错误 | | |
+| 300014  | startTime参数错误 | | |
+| 300015  | endTime参数错误 | | |
+| 300016  | brokerId参数错误 | | |
+| 300017  | assetId/assetName参数错误 | | |
 
 # Android集成文档
 
