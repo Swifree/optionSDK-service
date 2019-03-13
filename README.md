@@ -140,6 +140,8 @@ String stringForSigning = requestGet + timestamp;
 String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_SHA_256, secret).hmacHex(Base64.encodeBase64String(stringForSigning.getBytes(StandardCharsets.UTF_8))).getBytes());
 ```
 
+**注意：对于java中的HmacAlgorithms和HmacUtils，请使用commons-codec-1.11版本**
+
 ### 服务器时间
 
 **简要描述：** 
