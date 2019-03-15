@@ -467,7 +467,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | userId    | 是   | String | 用户id                       |
 | serialNum | 否   | String | 流水号                       |
 | assetIds  | 否   | String | 币种ids，以逗号分割(示例1,2) |
-| pageNo    | 否   | Integer | 页码，默认1                                           |
+| pageNum   | 否   | Integer | 页码，默认1                                           |
 | pageSize  | 否   | Integer | 每页条数，默认20，默认按照创建时间倒序 |
 
  **返回示例**
@@ -683,7 +683,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | :----- | :--- | :----- | ------ |
 | assetId | 是   | Integer | 币种id |
 | amountOrderBy | 否   | Integer | 用户余额排序规则，默认为1（asc），2为desc |
-| pageNo    | 否   | Integer | 页码，默认1                                           |
+| pageNum    | 否   | Integer | 页码，默认1                                           |
 | pageSize  | 否   | Integer | 每页条数，默认20 |
 
 **返回示例**
