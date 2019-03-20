@@ -591,13 +591,12 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | 参数名         | 类型    | 说明                                                         |
 | :------------- | :------ | ------------------------------------------------------------ |
 | assetId        | Integer | 资产币种id                                                       |
-| asset          | String  | 账号类型                                                     |
+| asset          | String  | 资产币种名称                                                     |
 | underlying     | String  | 标的
 | tradingTime    | Long    | 下单时间                                                     |
 | settlementTime | Long    | 结算时间                                                     |
-| settlement     | Integer | 结算状态：0 未结算，1 已结算, 计算收益中，2 已结算, 收益已到账, 3 结算失败，退款中, 4 结算失败，退款已到账 |
+| profitAndLoss  | Integer | 盈亏：1盈利，2亏损                                            |
 | price          | String  | 订单金额                                                     |
-| profitAndLoss  | Integer | 盈亏：1盈利，2亏损
 | profit         | String  | 收益                                                         |
 | direction      | Integer | 看涨看跌:1 看涨，2 看跌                                      |
 | rateOfReturn   | String  | 收益率                                      |
