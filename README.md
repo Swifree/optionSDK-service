@@ -536,7 +536,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 
 **简要描述：** 
 
-- 完整的交易记录，带分页的
+- 完整的已结算的交易记录，带分页的
 
 **请求URL：** 
 
