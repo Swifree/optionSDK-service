@@ -572,7 +572,6 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
                 "underlying": "BTC/USD",
                 "tradingTime": 1550722124000,
                 "settlementTime": 1550722200000,
-                "settlement": 1,
                 "price": "0.0001",
                 "profitAndLoss": 1
                 "profit": "0.00003",
