@@ -16,7 +16,7 @@
 
 1. 申请BrokerId、ApiKey/ApiSecret（开发环境）
 2. 服务端接入
-3. APP集成SDK
+3. APP/PC集成SDK
 4. 测试
 5. 切换正式环境（BrokerId、ApiKey/ApiSecret）
 
