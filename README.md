@@ -14,11 +14,11 @@
 
 ### 接入流程概述
 
-1. 申请ApiKey/ApiSecret（开发环境）
+1. 申请BrokerId、ApiKey/ApiSecret（开发环境）
 2. 服务端接入
 3. APP集成SDK
 4. 测试
-5. 切换正式环境（ApiKey/ApiSecret，SDK）
+5. 切换正式环境（BrokerId、ApiKey/ApiSecret，SDK）
 
 ### 服务端接入流程
 
