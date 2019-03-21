@@ -25,10 +25,11 @@
 1. 申请测试环境apikey/apisecret(在商务合作达成后由FOTA提供)，后续api使用上述秘钥签名，签名方式见 [apisecret签名](#apisecret签名)
 2. 服务端在用户开通期权或者注册时，同步调用fota的api [新建券商子账号](#新建券商子账号)，fota将返回一个uid和password，后台需保存账号间的映射关系，后续登录时使用
 3. 用户登录时使用上述接口返回的uid和password，调用[券商子账号登录](#券商子账号登录)，登录成功得到token，该token需要在客户端SDK设置，该token的默认有效期为7天，券商可自行设置
-4. 调用资金的转入转出接口，具体见接口文档
-5. 在SDK下单
-6. 资金往来的流水查询，具体见接口文档
-7. 交易记录的信息查询，具体见接口文档
+4. 使用[券商支持币种查询](#券商支持币种查询)接口，得到支持币种的assetId和assetName对应值(券商默认支持的币种不够时，可联系我们的商务进行增加)
+5. 调用资金的转入转出接口，具体见接口文档
+6. 在SDK下单
+7. 资金往来的流水查询，具体见接口文档
+8. 交易记录的信息查询，具体见接口文档
 
 ### APP接入流程
 
@@ -318,7 +319,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | 参数名    | 必选 | 类型    | 说明                 |
 | :-------- | :--- | :------ | -------------------- |
 | userId    | 是   | String  | 用户id               |
-| amount    | 是   | String  | 划转金额             |
+| amount    | 是   | String  | 划转金额，小数位不要超过16位      |
 | assetId   | 是   | Integer | 币的id               |
 | assetName | 是   | String  | 币的名称             |
 | serialNum | 是   | String  | 流水号，不可重复使用 |
