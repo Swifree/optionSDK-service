@@ -555,7 +555,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | endTime   | 否   | Long    | 下单时间（tradingTime）的结束时间，到毫秒             |
 | pageNo    | 否   | Integer | 页码，默认1                                           |
 | pageSize  | 否   | Integer | 每页条数，默认20，默认按照下单时间（tradingTime）倒序 |
-| assetId   | 是   | Integer | 资产币种id                                                |
+| assetId   | 否   | Integer | 资产币种id，不传则返回所有的资产币种数据                |
 
 **返回示例**
 
@@ -578,7 +578,8 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
                 "direction": 1,
                 "rateOfReturn": "0.003",
                 "spotIndex": "2345.22",
-                "optionType": 1
+                "optionType": 1,
+                "orderNum": "111111111"
          }]
     },
     "success": true
@@ -601,6 +602,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | rateOfReturn   | String  | 收益率                                      |
 | spotIndex      | String  | 下单时现货指数                                  |
 | optionType     | Integer | 期权类型:1 ATM期权，2 OTM期权                                      |
+| orderNum       | String  | 订单号                                    |
 
 ### 券商单个子账号余额查询
 
