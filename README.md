@@ -182,7 +182,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 
 **简要描述：** 
 
-- 新建券商子账号
+- 新建券商子账号，目前email和phone不能都为空，后续会改成都可以为空，目前可以赋值suid传过来
 
 **请求URL：** 
 
@@ -197,7 +197,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | 参数名 | 必选 | 类型   | 说明                               |
 | :----- | :--- | :----- | ---------------------------------- |
 | suid   | 是   | String | 第三方平台的用户id                 |
-| email  | 否   | String | 用户邮箱，email和phone必须要有一个 |
+| email  | 否   | String | 用户邮箱                          |
 | phone  | 否   | String | 用户手机号                         |
 | name   | 否   | String | 昵称                               |
 
