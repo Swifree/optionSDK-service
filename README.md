@@ -58,7 +58,7 @@
 - [资金转入转出查询](#资金转入转出查询)  
 - [资金转入转出分页查询](#资金转入转出分页查询) 
 - [完整交易记录](#完整交易记录) 
-- [券商单个子账号余额查询](#券商单个子账号余额查询)
+- [券商多个子账号余额查询](#券商多个子账号余额查询)
 - [券商所有子账号余额查询](#券商所有子账号余额查询) 
 - [券商支持币种查询](#券商支持币种查询) 
 - [券商子账号查询](#券商子账号查询) 
@@ -605,11 +605,11 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | optionType     | Integer | 期权类型:1 ATM期权，2 OTM期权                                      |
 | orderNum       | String  | 订单号                                    |
 
-### 券商单个子账号余额查询
+### 券商多个子账号余额查询
 
 **简要描述：** 
 
-- 券商子账号余额
+- 券商多个子账号余额，最多一次性查询100个
 
 **请求URL：** 
 
@@ -623,7 +623,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 
 | 参数名 | 必选 | 类型   | 说明   |
 | :----- | :--- | :----- | ------ |
-| userId | 是   | String | 用户id |
+| userId | 是   | String | 用户id，比如1,2,3,4 |
 
 **返回示例**
 
@@ -636,19 +636,22 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
             "brokerId": "13",
             "assetId": 1,
             "assetName": "USDT",
-            "amount": "11.0000000000000000"
+            "amount": "11.0000000000000000",
+            "userId": "1111"
         },
         {
             "brokerId": "13",
             "assetId": 2,
             "assetName": "BTC",
-            "amount": "10000011.7966132400000000"
+            "amount": "10000011.7966132400000000",
+            "userId": "1111"
         },
         {
             "brokerId": "13",
             "assetId": 3,
             "assetName": "ETH",
-            "amount": "9999999.8317700000000000"
+            "amount": "9999999.8317700000000000",
+            "userId": "1111"
         }
     ],
     "success": true
@@ -663,6 +666,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | assetId   | Integer | 标的id   |
 | assetName | String  | 标的名称 |
 | amount    | String  | 余额     |
+| userId    | String  | 用户id   |
 
 ### 券商所有子账号余额查询
 
