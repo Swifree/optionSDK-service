@@ -199,7 +199,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | suid   | 是   | String | 第三方平台的用户id                 |
 | email  | 否   | String | 用户邮箱                          |
 | phone  | 否   | String | 用户手机号                         |
-| name   | 否   | String | 昵称                               |
+| name   | 是   | String | 昵称，必传，后面做排名榜时需要      |
 
  **返回示例**
 
