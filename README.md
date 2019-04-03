@@ -9,6 +9,7 @@
 - [三、Android集成文档](#android集成文档)
 - [四、iOS集成文档](#ios集成文档)
 - [五、Web集成文档](#web集成文档)
+- [六、常见问题](#常见问题)
 
 # SDK接入概述
 
@@ -880,14 +881,15 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | 300015  | endTime参数错误 | | |
 | 300016  | brokerId参数错误 | | |
 | 300017  | assetId/assetName参数错误 | | |
+| 300018  | userId数量超过上线，一次最多只能100个 | | |
 
 # Android集成文档
-
 GitHub地址：[optionDemo-Android](https://github.com/FotaPodRepo/optionDemo-Android)
 
 # iOS集成文档
-
 GitHub地址：[optionSDK-iOS](https://github.com/FotaPodRepo/optionSDK-iOS)
 
 # Web集成文档
 GitHub地址：[optionSDK-web](https://github.com/FotaPodRepo/optionSDK-web)
+
+# 常见问题
