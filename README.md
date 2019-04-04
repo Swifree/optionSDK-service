@@ -20,7 +20,7 @@
 3. APP/PC集成SDK
 4. 测试
 5. 申请正式环境的BrokerId、ApiKey/ApiSecret，切换到正式环境
-6. APP/PC集成SDK 切换到正式模式
+6. APP/PC集成SDK 切换到正式模式，isDevelopment设置为false
 
 ### 服务端接入流程
 
