@@ -885,7 +885,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 | 300018  | userId数量超过上线，一次最多只能100个 | | |
 
 # Android集成文档
-GitHub地址：[optionDemo-Android](https://github.com/jwkiller/optionDemo-Android)
+GitHub地址：[optionDemo-Android](https://github.com/jwkiller/optionDemoAndroid)
 
 # iOS集成文档
 GitHub地址：[optionSDK-iOS](https://github.com/FotaPodRepo/optionSDK-iOS)
