@@ -184,7 +184,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 
 **简要描述：** 
 
-- 新建券商子账号，目前email和phone不能都为空，后续会改成都可以为空，目前可以赋值suid传过来
+- 新建券商子账号，目前email和phone不能都为空，如果对数据敏感，可以把email或phone赋值suid传过来
 
 **请求URL：** 
 
