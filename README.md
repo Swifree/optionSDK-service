@@ -752,7 +752,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 ### 券商支持币种查询
 **简要描述：** 
 
-- 券商支持币种查询
+- 券商支持币种查询，需要把brokerId加上，如果没有写brokerId则获取的是默认的支持币种
 
 **请求URL：** 
 
@@ -766,7 +766,7 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
 
 | 参数名 | 必选 | 类型   | 说明   |
 | :----- | :--- | :----- | ------ |
-| brokerId | 否   | String | 券商id |
+| brokerId | 是   | String | 券商id |
 
 **返回示例**
 
