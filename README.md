@@ -776,20 +776,19 @@ String signature = Base64.encodeBase64String(new HmacUtils(HmacAlgorithms.HMAC_S
   "success" : true,
   "data" : [
     {
-      "amount" : "123.0000000000000000",
-      "assetId" : 1
-    },
-    {
       "amount" : "10000024.7966132400000000",
-      "assetId" : 2
+      "assetId" : 2,
+      "assetName" : "BTC"
     },
     {
       "amount" : "9999999.8317700000000000",
-      "assetId" : 3
+      "assetId" : 3,
+      "assetName" : "ETH"
     },
     {
       "amount" : "0.0000000000000000",
-      "assetId" : 4
+      "assetId" : 4,
+      "assetName" : "FOTA"
     }
   ],
   "code" : 0
