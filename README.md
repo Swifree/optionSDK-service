@@ -47,17 +47,65 @@
 > SDK接入默认使用开发环境，接入完成后参照对应平台的SDK接入文档修改为线上生产环境。
 
 
-# 回调说明
-当接入方的服务端调用用户的划入划出操作是，如果接入方提供了回调地址，出于安全原因，我方会进行回调校验此请求是否由调用方发出。此请求在调用方是否合法。接入方需满足如下要求:
+### 回调说明
+当接入方的服务端调用用户的划入/划出操作时，为了资金安全考虑，我方会进行回调校验此请求是否由调用方发出。此请求在调用方是否合法。流程如下:
 
-- 回调url，且必须是https， 例如https://xxx.com/request/check。
-- 使用post请求，样例参数:{requestId:"xxx", "timestamp":"2019-05-29 17:00:00"}，请求参数以json字符串格式放在request的body中
+1. 券商调用我方进行资金发起请求(现在的场景是划入/划出）
+2. 我方进行回调，判断请求是否合法
+3. 券商确认此请求合法
+4. 我方执行请求
+5. 返回结果给券商
+
+####  一个简单的回调地址实现如下：
+
+```java
+
+@Data
+public class CheckParam {
+    /**
+     * 券商请求唯一标识，对于划入划出，就是券商调用时传入的serialNum字段
+     */
+    private String requestId;
+    /**
+     * 请求时间戳
+     */
+    private String timestamp;
+
+    public CheckParam(String requestId, String timestamp) {
+        this.requestId = requestId;
+        this.timestamp = timestamp;
+    }
+
+    public CheckParam() {
+    }
+}
+
+@Controller
+@Slf4j
+public class DefaultCheckController {
+    @RequestMapping("/v1/request/check")
+    @ResponseBody
+    public Result checkReuest(@RequestBody CheckParam checkParam) {
+        log.info("checkParam:{}", checkParam);
+        if (null == checkParam || StringUtils.isEmpty(checkParam.getRequestId()) || StringUtils.isEmpty(checkParam.getTimestamp())) {
+            return Result.fail(100013, "请求回调校验失败");
+        }
+        //TODO 一定需要校验requestId是否是自己的调用，并且要校验时间戳不超过5分钟，防止重放攻击
+        return Result.success();
+    }
+}
+```
+
+
+#### 说明：
+- 券商提供回调url，且必须是https， 例如https://xxx.com/request/check
+- 我方使用post请求，样例参数:{requestId:"xxx", "timestamp":"2019-05-29 17:00:00"}，请求参数以json字符串格式放在request的body中
 - 返回格式:  {code: 0, "timestamp":"2019-05-29 17:00:00", msg:""} , 返回结果使用json返回；
 
 |错误码|描述|
 |:---:|:---:|
 |0|成功|
-|101|非法请求|
+|100013|请求回调校验失败|
 
 # 服务端接口说明
 
